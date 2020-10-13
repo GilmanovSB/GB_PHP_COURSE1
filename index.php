@@ -1,134 +1,88 @@
 
 <?php
 
-// task1
+//task1
 
-$a = 34;
-$b = 13;
-
-if($a >= 0 && $b >= 0){
-    echo $a - $b;
-}
-else if($a < 0 && $b < 0){
-    echo $a * $b;
-} else {
-    echo $a + $b;
+$i = 0;
+while($i <= 100){
+    if($i % 3 == 0){
+        echo $i ;
+    }
+    $i++;
 }
 
 //task2
+echo "</br>";
 
-function sum(float $a, float $b) : float
-{
-    return $a + $b;
-}
-
-function multiply(float $a, float $b) : float
-{
-    return $a * $b;
-}
-
-function diff(float $a, float $b) : float
-{
-    return $a - $b;
-}
-
-function division(float $a, float $b) : float
-{
-    if($b == 0){
-        return false;
+$i = 0;
+do {
+    if($i == 0){
+        echo "{$i} - ноль </br>";
+    } 
+    elseif($i % 2 == 0){
+        echo "{$i} - четное число </br>";
     } else {
-        return $a / $b;
+        echo "{$i} - нечетное число </br>";
     }
-    
-}
-
-var_dump(sum(1,3));
-var_dump(multiply(1,3));
-var_dump(diff(1,3));
-var_dump(division(1,3));
+    $i++;
+} while ($i <= 10);
 
 //task3
+echo "</br>";
 
-function mathOperation(float $a, float $b, string $operation) : float
-{
-    switch ($operation) {
-        case 'sum' : return sum($a,$b); 
-        case 'multiply' : return multiply($a,$b);
-        case 'diff' : return diff($a,$b);
-        case 'division' : return division($a,$b);
-    }
+$sities = [
+    'Московская обдасть' => 'Москва, Зеленоград, Клин',
+    'Ленинградская область' => 'Санкт-Петербург, Всеволожск, Павловск, Крондштат',
+    'Липецкая область' => 'Липецк, Елец, Лебедянь, Данков, Грязи, Усмань'
+];
+
+foreach($sities as $key => $values){
+    echo "{$key} : {$values}</br>";
 }
 
-var_dump(mathOperation(12321, 3.14, 'sum'));
+var_dump($sities);
+
+//task4
+echo "</br>";
+
+$letter = [
+    'а' => 'a','б' => 'b','в' => 'v','г' => 'g','д' => 'd',
+    'е' => 'e','ё' => 'yo','ж' => 'zh','з' => 'z','и' => 'i','й' => 'iy',
+    'к' => 'k','л' => 'l','м' => 'm','н' => 'n','о' => 'o','п' => 'p',
+    'р' => 'r','с' => 's','т' => 't','у' => 'y','ф' => 'f','х' => 'h',
+    'ц' => 'ts','ч' => 'ch','ш' => 'sh','щ' => 'sch','ъ' => '`','ь' => '`',
+    'ы' => 'i`','э' => 'e`','ю' => 'u','я' => 'ay'
+];
+
+function transliterals(string $str, array $letter) : string
+{
+    $str = mb_strtolower($str);
+    return str_replace(array_keys($letter), $letter, $str);
+}
+
+var_dump(transliterals('Мама мыла Машу', $letter));
 
 //task5
+echo "</br>";
 
-function power(int $val, int $pow):int
+function replace(string $str) : string
 {
-    if($pow == 0){
-        return 1;
-    }
-    else if($pow < 0){
-        return $val * power($val, ($pow * -1) - 1);
-    }
-    return $val * power($val, $pow - 1);
-
+    return str_replace(' ', '_', $str);
 }
 
-var_dump(power(5,2));
+var_dump(replace('fds fsdf sdf sdf s'));
 
 //task6
+echo "</br>";
 
-function getTime() : string
-{
-    $hours = date("h");
-    $minutes = date("i");
+//task7
+echo "</br>";
 
-    // Склонение часов
-    if($hours >= 5 && $hours <= 20){
-        $hours = "{$hours} часов";
-    }
-    else if($hours == 1 || $hours == 21){
-        $hours = "{$hours} час";
-    } else {
-        $hours = "{$hours} часа";
-    }
-    //Склонение минут
-    if($minutes >= 5 && $minutes <= 20){
-        $minutes = "{$minutes} минут";
-    }else {
-        $newMinutes = $minutes % 10;
-        if($newMinutes >= 2 && $newMinutes <= 4){
-            $minutes = "{$minutes} минуты";
-        } 
-        else if($newMinutes > 4){
-            $minutes = "{$minutes} минут";
-        }else {
-            $minutes = "{$minutes} минута";
-    }
-}
-    return "{$hours} {$minutes}";
-}
+for($itterator = 0; $itterator < 10; print $itterator++){}; 
 
-var_dump(getTime());
+//task8
+echo "</br>";
 
-?>
-
-<?php 
-//task4
-
-    $content = date("yy");
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>content</title>
-</head>
-<body>
-    <footer><?php echo $content;?></footer>
-</body>
-</html>
-
+//task9
+echo "</br>";
 
