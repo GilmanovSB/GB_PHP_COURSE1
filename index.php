@@ -34,7 +34,12 @@ function diff(float $a, float $b) : float
 
 function division(float $a, float $b) : float
 {
-    return $a / $b;
+    if($b == 0){
+        return false;
+    } else {
+        return $a / $b;
+    }
+    
 }
 
 var_dump(sum(1,3));
@@ -47,7 +52,7 @@ var_dump(division(1,3));
 function mathOperation(float $a, float $b, string $operation) : float
 {
     switch ($operation) {
-        case 'sum' : return sum($a,$b); // Так как используется return думаю break использовать нет необходимости?
+        case 'sum' : return sum($a,$b); 
         case 'multiply' : return multiply($a,$b);
         case 'diff' : return diff($a,$b);
         case 'division' : return division($a,$b);
@@ -64,7 +69,6 @@ function power(int $val, int $pow):int
         return 1;
     }
     else if($pow < 0){
-        echo 'отрицательная степень была изменена на положительную';
         return $val * power($val, ($pow * -1) - 1);
     }
     return $val * power($val, $pow - 1);
